@@ -1,0 +1,84 @@
+/**
+ * 上海尤恩信息技术有限公司
+ * Copyright 2017-2025 uenpay
+ * project : ${project}
+ * package ：${package}.impl
+ * file : ${className}ServiceImpl.java
+ * date ：${date}
+ */
+package ${package}.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.uenpay.exception.BusinessException;
+import ${package}.I${className}Service;
+import com.uenpay.model.CombogridSearch;
+import com.uenpay.model.CombogridVO;
+import ${importClass};
+import com.uenpay.page.PageData;
+import com.uenpay.page.PageForm;
+import com.uenpay.page.PageUtils;
+
+/**
+ * @author ${author}
+ * Specification : 文档说明
+ */
+@Service
+public class ${className}ServiceImpl implements I${className}Service {
+
+	@Autowired
+	private ${className}Mapper ${classNameLow}Mapper;
+
+	@Override
+	public PageData queryPageData(PageForm form, ${className} record) {
+		PageUtils.preparePaging(form);
+		List<${className}> recordList = ${classNameLow}Mapper.queryPageData(record);
+		PageData pageData = PageUtils.wrapPageData(recordList);
+		return pageData;
+	}
+
+	@Override
+	public ${className} getById(Long id) {
+		${className} record = ${classNameLow}Mapper.selectByPrimaryKey(id);
+		return record;
+	}
+
+	@Override
+	@Transactional(rollbackFor={Exception.class})
+	public Integer save(${className} record) throws BusinessException {
+		Integer count = ${classNameLow}Mapper.insert(record);
+		return count;
+	}
+
+	@Override
+	@Transactional(rollbackFor={Exception.class})
+	public Integer update(${className} record) throws BusinessException {
+		Integer count = ${classNameLow}Mapper.updateByPrimaryKeySelective(record);
+		return count;
+	}
+	
+
+	@Override
+	@Transactional(rollbackFor={Exception.class})
+	public Integer remove(Long id) throws BusinessException {
+		return ${classNameLow}Mapper.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public List<CombogridVO> comboGridList(CombogridSearch search)
+			throws BusinessException {
+		List<CombogridVO> list = ${classNameLow}Mapper.comboList(search);
+		return list;
+	}
+	
+	@Override
+	public List<${className}> select(${className} record){
+		List<${className}> recordList = ${classNameLow}Mapper.queryPageData(record);
+		return recordList;
+	}
+
+}

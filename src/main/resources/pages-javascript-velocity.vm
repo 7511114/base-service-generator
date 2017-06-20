@@ -1,0 +1,30 @@
+#set( $datagridObj = 'var datagridObj = $("#datagrid_table");')
+$datagridObj
+$(function(){
+	datagridObj.inituenDialog({
+		title:"添加${title}",
+		width:633
+	});
+	loadDataGrid();
+});
+/**
+ * 加载表格
+ */
+function loadDataGrid() {
+	datagridObj.uenDatagrid({
+		all:true,
+		del:true, //logout
+		excel:true,
+		param:"${param}",
+		//createUser:true,//{name:'createUser',time:'createTime'}
+		//updateUser:true,
+		columns:[[
+		          {field:'',checkbox : true },
+					{field : 'id',title : '编号',align : 'center',width : 50}, 
+					{field : 'username',title : '用户名',align : 'center',width : 100}, 
+					{field : 'nickname',title : '昵称',align : 'center',width : 100},
+					{field : 'mobile',title : '手机号',align : 'center',width : 100},
+					{field : 'cerNo',title : '身份证号码',align : 'center',width : 100}
+			    ]]
+	});
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>	
+	<title>${title}</title>
+	   #set($meta = '#parse("/control/meta.vm")')
+${meta}
+</head>
+<body class="easyui-layout">
+	<div data-options="region:'north',split:false,border:false,height:'auto'">
+		<div class="query_title tabs-header">查询</div>
+		<div class="query-opts">
+			<form method="post" id="queryForm">
+	        	    <div>
+						<span >用户名:</span>
+						<input name="userName">
+					</div>
+					<div>
+				      <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
+					   <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">清空</a>
+				    </div>
+				
+			</form>
+			
+			 #set($queryForm = '#parse("/layout/queryForm.vm")')
+${queryForm}
+		</div>
+	</div>
+	<div id="querycenter" data-options="region:'center',border:false">
+		<table id="datagrid_table"></table>
+	</div>
+    <div id="editDialog" class="dialog"></div>
+</body>
+<script type="text/javascript" src="#getJsPath('uenpay/${pageFile}/${classNameLow}.js')">
+</script>
+</html>

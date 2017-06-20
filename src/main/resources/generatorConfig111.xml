@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<generatorConfiguration>
+	<bean class="com.uenpay.model.user.UserInfo" />
+	<!-- Service类生成配置 -->
+	<javaServiceGenerator targetPackage="com.uenpay.im.service.bankcard"
+		targetProject="../base-service/src/main/java">
+	</javaServiceGenerator>
+	
+	<javaControllerGenerator targetPackage="com.uenpay.im.service.Controller"
+		targetProject="../base-service/src/main/java" pageFile="userFile">
+	</javaControllerGenerator>
+	
+	<pageGenerator targetPageFile="WEB-INF/view" targetJavaScriptFile="resources/js/uenpay"
+		param="id" title="用户生成"
+		targetProject="../base-service/src/main/webapp">
+	</pageGenerator>
+
+</generatorConfiguration>

@@ -1,0 +1,170 @@
+/**
+ * 上海尤恩信息技术有限公司
+ * Copyright 2017-2025 uenpay
+ * project : ${project}
+ * package ：${package}
+ * file : I${className}Service.java
+ * date ：${date}
+ */
+package ${package};
+
+import java.util.Date;
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.uenpay.excel.template.IExcelCallback;
+import com.uenpay.excel.template.ImportExcelTemplate;
+import com.uenpay.exception.BusinessException;
+import com.uenpay.exception.SystemException;
+import com.uenpay.framework.bean.SessionUser;
+import com.uenpay.framework.threadlocal.ThreadLocalContainer;
+import ${packageService}.I${className}Service;
+import com.uenpay.model.CombogridSearch;
+import com.uenpay.model.CombogridVO;
+import ${importClass};
+import com.uenpay.page.PageData;
+import com.uenpay.page.PageForm;
+import com.uenpay.param.IdParam;
+
+@Controller
+@RequestMapping(value="${classNameLow}")
+public class ${className}Controller {
+
+	@Autowired
+	private I${className}Service ${classNameLow}Service;
+	
+	@Resource(name="importExcelTemplate")
+	private ImportExcelTemplate importExcelTemplate;
+
+	/**
+	 * 用户信息页面
+	 * @return
+	 */
+	@RequestMapping(value="pages",method=RequestMethod.GET)
+	public String showUserPage(){
+		return "${pageFile}/${classNameLow}Page";
+	}
+	
+	/**
+	 * 查询用户信息列表
+	 * @param form
+	 * @param record
+	 * @return
+	 */
+	@RequestMapping(value="showPageData",method=RequestMethod.POST)
+	public @ResponseBody PageData showPageData(PageForm form,${className} record){
+		return ${classNameLow}Service.queryPageData(form, record);
+	}
+	
+	/**
+	 * 对话框
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="dialog",method=RequestMethod.GET)
+	public String userDialog(Long id,Model model){
+		if(null != id){
+			${className} record = ${classNameLow}Service.getById(id);
+			model.addAttribute("record", record);
+		}
+		return "${pageFile}/${classNameLow}Edit";
+	}
+	
+	/**
+	 * 添加或者修改方法
+	 * @param record
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="edit",method=RequestMethod.POST)
+	public @ResponseBody Long edit(${className} record) throws Exception{
+		SessionUser sessionUser = ThreadLocalContainer.getUser();
+		if(null != record.getId()){
+			record.setUpdateUser(String.valueOf(sessionUser.getUserId()));
+			record.setUpdateTime(new Date());
+			record.setDataVersion(record.getDataVersion()+1);
+			${classNameLow}Service.update(record);
+		}else{
+			record.setCreateUser(String.valueOf(sessionUser.getUserId()));
+			record.setCreateTime(new Date());
+			record.setDelFlag(1);
+			record.setDataVersion(1);
+			${classNameLow}Service.save(record);
+		}
+		return record.getId();
+	}
+	
+	@RequestMapping(value="remove",method=RequestMethod.POST)
+	public @ResponseBody Integer remove(@RequestBody List<IdParam> ids) throws Exception{
+		if(null == ids){
+			throw new SystemException("error.1002");
+		}
+		#set( $xiaoyu = '<' )
+		for(int i=0; i${xiaoyu}ids.size(); i++){
+			${classNameLow}Service.remove((long)ids.get(i).getId());
+		}
+		return 1;
+	}
+	
+	/**
+	 * 下拉选择框
+	 * @param search
+	 * @return
+	 * @throws BusinessException
+	 */
+	@RequestMapping(value="combo/getCombo")
+	public @ResponseBody List<CombogridVO> comboGridList(CombogridSearch search) throws BusinessException{
+		List<CombogridVO> list = ${classNameLow}Service.comboGridList(search);
+		return list;
+	}
+	
+	/**
+	 * 获得下拉选择框的默认值
+	 * @param search
+	 * @return
+	 * @throws BusinessException
+	 */
+	@RequestMapping(value="combo/putCombo")
+	public @ResponseBody CombogridVO comboGrid(CombogridSearch search) throws BusinessException{
+		List<CombogridVO> list = ${classNameLow}Service.comboGridList(search);
+		return list.get(0);
+	}
+	
+	/**
+	 * 导出excel表格
+	 * @param request
+	 * @param response
+	 * @param record
+	 * @throws Exception
+	 */
+	@RequestMapping(value="exportExcel",method=RequestMethod.GET)
+	public void exportExcel(HttpServletRequest request,HttpServletResponse response,${className} record) throws Exception{
+		exportExcel(response, record);
+	}
+	
+	public void exportExcel(HttpServletResponse response, final ${className} record) throws Exception{
+		List<Object> headTitle = null; //TODO importExcelTemplate.setExcelHead("用户名","身份证号","测试获取常量");
+		List<${className}> list = ${classNameLow}Service.select(record);
+		importExcelTemplate.exportExcel("用户信息", response, headTitle, list, new IExcelCallback<${className}>() {
+			@Override
+			public void export(List<Object> rowMeta, ${className} detail) {
+				//rowMeta.add(detail.getUsername());
+				//rowMeta.add(detail.getCerNo());
+				//rowMeta.add(SysConstantConverter.getValue("DATA_STATUS",String.valueOf(detail.getDelFlag())));
+			}
+			
+		});
+	}
+}

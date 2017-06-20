@@ -1,0 +1,14 @@
+#set($dialogForm = '#parse("/layout/dialogForm.vm")')
+$dialogForm
+<form id="editForm" class="diaform" action="" method="post">
+	<input type="hidden" name="id" value="$!{record.id}" /> 
+	<input type="hidden" name="dataVersion" value="$!{record.dataVersion}" /> 
+	<table>
+		<tr>
+			<td>用户名：</td>
+			<td><input data-options="required:true,validType:'length[1,10]'" value="$!{record.username}" name="username"></td>
+			<td>昵称：</td>
+			<td><input data-options="required:true,validType:'length[1,12]'" value="$!{record.nickname}" name="nickname"></td>
+		</tr>
+	</table>
+</form>

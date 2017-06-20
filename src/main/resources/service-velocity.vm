@@ -1,0 +1,80 @@
+/**
+ * 上海尤恩信息技术有限公司
+ * Copyright 2017-2025 uenpay
+ * project : ${project}
+ * package ：${package}
+ * file : I${className}Service.java
+ * date ：${date}
+ */
+package ${package};
+
+import java.util.List;
+
+import com.uenpay.exception.BusinessException;
+import com.uenpay.model.CombogridSearch;
+import com.uenpay.model.CombogridVO;
+import ${importClass};
+import com.uenpay.page.PageData;
+import com.uenpay.page.PageForm;
+
+/**
+ * @author ${author}
+ * Specification : 文档说明
+ */
+public interface I${className}Service {
+
+	/**
+	 * 分页条件查询
+	 * @param form
+	 * @param record  查询参数
+	 * @return
+	 */
+	PageData queryPageData(PageForm form,${className} record);
+	
+	/**
+	 * 分页查询
+	 * @param record 查询参数
+	 * @return
+	 */
+	List<${className}> select(${className} record);
+
+	/**
+	 * 根据主键查询记录
+	 * @param id
+	 * @return
+	 */
+	${className} getById(Long id);
+
+	/**
+	 * 保存
+	 * @param record
+	 * @return
+	 * @throws BusinessException
+	 */
+	Integer save(${className} record) throws BusinessException;
+	
+	/**
+	 * 更新
+	 * @param record
+	 * @return
+	 * @throws BusinessException
+	 */
+	Integer update(${className} record) throws BusinessException;
+	
+	/**
+	 * 删除
+	 * @param id
+	 * @return
+	 * @throws BusinessException
+	 */
+	Integer remove(Long id) throws BusinessException;
+
+	/**
+	 * 下拉框
+	 * @param search
+	 * @return
+	 * @throws BusinessException
+	 */
+	List<CombogridVO> comboGridList(CombogridSearch search) throws BusinessException;
+
+}
