@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>	
-	<title>${title}</title>
+	<title>/${title}</title>
 	   #set($meta = '#parse("/control/meta.vm")')
 ${meta}
 </head>
@@ -30,6 +30,7 @@ ${queryForm}
 	</div>
     <div id="editDialog" class="dialog"></div>
 </body>
-<script type="text/javascript" src="#getJsPath('uenpay/${pageFile}/${classNameLow}.js')">
+#set($getJsPathPrefix = '#')
+<script type="text/javascript" src="${getJsPathPrefix}getJsPath('uenpay/${pageFile}/${classNameLow}.js')">
 </script>
 </html>

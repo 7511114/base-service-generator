@@ -19,11 +19,11 @@ import com.uenpay.generator.config.xml.ConfigurationParser;
  */
 public class HelloVelocityTest {
 	
-	@Test
+	/*@Test
 	public void test2() throws Exception{
 		ConfigurationParser configurationParser = new ConfigurationParser();
 		Configuration configuration = configurationParser.parseConfiguration(this.getClass().getClassLoader().getResourceAsStream("generatorConfig.xml"));
 		VelocityGenerator velocityGenerator = new VelocityGenerator();
 		velocityGenerator.init(configuration);
-	}
+	}*/
 }
