@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.uenpay.excel.template.IExcelCallback;
 import com.uenpay.excel.template.ImportExcelTemplate;
-import com.uenpay.exception.BusinessException;
 import com.uenpay.exception.SystemException;
 import com.uenpay.framework.bean.SessionUser;
 import com.uenpay.framework.threadlocal.ThreadLocalContainer;
@@ -122,10 +121,10 @@ public class ${className}Controller {
 	 * 下拉选择框
 	 * @param search
 	 * @return
-	 * @throws BusinessException
+	 * @throws Exception
 	 */
 	@RequestMapping(value="combo/getCombo")
-	public @ResponseBody List<CombogridVO> comboGridList(CombogridSearch search) throws BusinessException{
+	public @ResponseBody List<CombogridVO> comboGridList(CombogridSearch search) throws Exception{
 		List<CombogridVO> list = ${classNameLow}Service.comboGridList(search);
 		return list;
 	}
@@ -134,10 +133,10 @@ public class ${className}Controller {
 	 * 获得下拉选择框的默认值
 	 * @param search
 	 * @return
-	 * @throws BusinessException
+	 * @throws Exception
 	 */
 	@RequestMapping(value="combo/putCombo")
-	public @ResponseBody CombogridVO comboGrid(CombogridSearch search) throws BusinessException{
+	public @ResponseBody CombogridVO comboGrid(CombogridSearch search) throws Exception{
 		List<CombogridVO> list = ${classNameLow}Service.comboGridList(search);
 		return list.get(0);
 	}

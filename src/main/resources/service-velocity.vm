@@ -10,7 +10,6 @@ package ${package};
 
 import java.util.List;
 
-import com.uenpay.exception.BusinessException;
 import com.uenpay.model.CombogridSearch;
 import com.uenpay.model.CombogridVO;
 import ${importClass};
@@ -49,32 +48,32 @@ public interface I${className}Service {
 	 * 保存
 	 * @param record
 	 * @return
-	 * @throws BusinessException
+	 * @throws Exception
 	 */
-	Integer save(${className} record) throws BusinessException;
+	Integer save(${className} record) throws Exception;
 	
 	/**
 	 * 更新
 	 * @param record
 	 * @return
-	 * @throws BusinessException
+	 * @throws Exception
 	 */
-	Integer update(${className} record) throws BusinessException;
+	Integer update(${className} record) throws Exception;
 	
 	/**
 	 * 删除
 	 * @param id
 	 * @return
-	 * @throws BusinessException
+	 * @throws Exception
 	 */
-	Integer remove(Long id) throws BusinessException;
+	Integer remove(Long id) throws Exception;
 
 	/**
 	 * 下拉框
 	 * @param search
 	 * @return
-	 * @throws BusinessException
+	 * @throws Exception
 	 */
-	List<CombogridVO> comboGridList(CombogridSearch search) throws BusinessException;
+	List<CombogridVO> comboGridList(CombogridSearch search) throws Exception;
 
 }
