@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.uenpay.ams.controller.PropertyEditorSupportController;
 import com.uenpay.excel.template.IExcelCallback;
 import com.uenpay.excel.template.ImportExcelTemplate;
 import com.uenpay.exception.SystemException;
@@ -38,7 +39,7 @@ import com.uenpay.param.IdParam;
 
 @Controller
 @RequestMapping(value="${classNameLow}")
-public class ${className}Controller {
+public class ${className}Controller extends PropertyEditorSupportController {
 
 	@Autowired
 	private I${className}Service ${classNameLow}Service;
