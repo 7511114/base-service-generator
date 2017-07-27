@@ -39,7 +39,7 @@ public interface I${className}Service {
 
 	/**
 	 * 根据主键查询记录
-	 * @param id
+	 * @param ${privateKey}
 	 * @return
 	 */
 	${className} getById(${privateKeyType} ${privateKey});
@@ -62,7 +62,7 @@ public interface I${className}Service {
 	
 	/**
 	 * 删除
-	 * @param id
+	 * @param ${privateKey}
 	 * @return
 	 * @throws Exception
 	 */
