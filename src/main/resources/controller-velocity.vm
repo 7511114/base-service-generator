@@ -74,9 +74,9 @@ public class ${className}Controller extends PropertyEditorSupportController {
 	 * @return
 	 */
 	@RequestMapping(value="dialog",method=RequestMethod.GET)
-	public String userDialog(${privateKeyType} ${privateKey},Model model){
-		if(null != ${privateKey}){
-			${className} record = ${classNameLow}Service.getById(${privateKey});
+	public String userDialog(${privateKeyType} id,Model model){
+		if(null != id){
+			${className} record = ${classNameLow}Service.getById(id);
 			model.addAttribute("record", record);
 		}
 		return "${pageFile}/${classNameLow}Edit";
