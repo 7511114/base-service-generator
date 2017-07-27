@@ -20,7 +20,7 @@ function loadDataGrid() {
 		//updateUser:true,
 		columns:[[
 		          {field:'',checkbox : true },
-					{field : 'id',title : '编号',align : 'center',width : 50}, 
+					{field : '${param}',title : '编号',align : 'center',width : 50}, 
 					{field : 'username',title : '用户名',align : 'center',width : 100}, 
 					{field : 'nickname',title : '昵称',align : 'center',width : 100},
 					{field : 'mobile',title : '手机号',align : 'center',width : 100},
