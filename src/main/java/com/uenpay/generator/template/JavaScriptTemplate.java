@@ -35,7 +35,8 @@ public class JavaScriptTemplate {
 			return;
 		}
 		String beanClass = map.get(XmlConstants.BEAN_CLASS);
-		String param = map.get(XmlConstants.PAGEGENERATOR_PARAM);
+		String beanPrivateKey = map.get(XmlConstants.BEAN_PRIVATE_KEY);
+		beanPrivateKey = (null == beanPrivateKey || "".equals(beanPrivateKey)) ? "id" : beanPrivateKey;
 		
 		String title = map.get(XmlConstants.PAGEGENERATOR_TITLE);
 		
@@ -49,7 +50,7 @@ public class JavaScriptTemplate {
 		String beanName = beanClass.substring(beanClass.lastIndexOf(".")+1);
 		VelocityContext ctx = new VelocityContext();
 		ctx.put(VelocityContextConstants.PAGE_FILE, pageFile);
-		ctx.put(VelocityContextConstants.PAGE_PARAM, param);
+		ctx.put(VelocityContextConstants.PAGE_PARAM, beanPrivateKey);
 		ctx.put(VelocityContextConstants.PAGE_TITLE, title);
 		String beanNameLow = StringUtils.toLowerCaseFirstOne(beanName);
 		ctx.put(VelocityContextConstants.CLASS_NAME_LOW, beanNameLow);

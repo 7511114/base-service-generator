@@ -42,7 +42,7 @@ public interface I${className}Service {
 	 * @param id
 	 * @return
 	 */
-	${className} getById(Long id);
+	${className} getById(${privateKeyType} ${privateKey});
 
 	/**
 	 * 保存
@@ -66,7 +66,7 @@ public interface I${className}Service {
 	 * @return
 	 * @throws Exception
 	 */
-	Integer remove(Long id) throws Exception;
+	Integer remove(${privateKeyType} ${privateKey}) throws Exception;
 
 	/**
 	 * 下拉框

@@ -35,6 +35,10 @@ public class ControllerTemplate {
 			return;
 		}
 		String beanClass = map.get(XmlConstants.BEAN_CLASS);
+		String beanPrivateKey = map.get(XmlConstants.BEAN_PRIVATE_KEY);
+		beanPrivateKey = (null == beanPrivateKey || "".equals(beanPrivateKey)) ? "id" : beanPrivateKey;
+		String beanPrivateKeyType = map.get(XmlConstants.BEAN_PRIVATE_KEY_TYPE);
+		beanPrivateKeyType = (null == beanPrivateKeyType || "".equals(beanPrivateKeyType)) ? "id" : beanPrivateKeyType;
 		String targetPackage = map.get(XmlConstants.JAVACONTROLLERGENERATOR_TARGETPACKAGE);
 		String targetProject = map.get(XmlConstants.JAVACONTROLLERGENERATOR_TARGETPROJECT);
 		String pageFile = map.get(XmlConstants.JAVACONTROLLERGENERATOR_PAGEFILE);
@@ -45,6 +49,9 @@ public class ControllerTemplate {
 		ctx.put(VelocityContextConstants.DATE_KEY, VelocityContextConstants.simpleDateFormat());
 		ctx.put(VelocityContextConstants.CLASS_NAME, beanName);
 		ctx.put(VelocityContextConstants.IMPORT_CLASS, beanClass);
+		ctx.put(VelocityContextConstants.PRIVATE_KEY, beanPrivateKey);
+		ctx.put(VelocityContextConstants.PRIVATE_KEY_UP, beanPrivateKey.substring(0, 1).toUpperCase() + beanPrivateKey.substring(1));
+		ctx.put(VelocityContextConstants.PRIVATE_KEY_TYPE, beanPrivateKeyType);
 		ctx.put(VelocityContextConstants.PAGE_FILE, pageFile);
 		ctx.put(VelocityContextConstants.PACKAGE_SERVICE, packageService);
 		ctx.put(VelocityContextConstants.AUTHOR, System.getProperty(XmlConstants.USER_NAME));

@@ -41,8 +41,8 @@ public class ${className}ServiceImpl implements I${className}Service {
 	}
 
 	@Override
-	public ${className} getById(Long id) {
-		${className} record = ${classNameLow}Mapper.selectByPrimaryKey(id);
+	public ${className} getById(${privateKeyType} ${privateKey}) {
+		${className} record = ${classNameLow}Mapper.selectByPrimaryKey(${privateKey});
 		return record;
 	}
 
@@ -63,8 +63,8 @@ public class ${className}ServiceImpl implements I${className}Service {
 
 	@Override
 	@Transactional(rollbackFor={Exception.class})
-	public Integer remove(Long id) throws Exception {
-		return ${classNameLow}Mapper.deleteByPrimaryKey(id);
+	public Integer remove(${privateKeyType} ${privateKey}) throws Exception {
+		return ${classNameLow}Mapper.deleteByPrimaryKey(${privateKey});
 	}
 
 	@Override

@@ -41,6 +41,10 @@ public class ServiceTemplate {
 			return;
 		}
 		String beanClass = map.get(XmlConstants.BEAN_CLASS);
+		String beanPrivateKey = map.get(XmlConstants.BEAN_PRIVATE_KEY);
+		beanPrivateKey = (null == beanPrivateKey || "".equals(beanPrivateKey)) ? "id" : beanPrivateKey;
+		String beanPrivateKeyType = map.get(XmlConstants.BEAN_PRIVATE_KEY_TYPE);
+		beanPrivateKeyType = (null == beanPrivateKeyType || "".equals(beanPrivateKeyType)) ? "id" : beanPrivateKeyType;
 		String targetPackage = map.get(XmlConstants.JAVASERVICEGENERATOR_TARGETPACKAGE);
 		String targetProject = map.get(XmlConstants.JAVASERVICEGENERATOR_TARGETPROJECT);
 		String beanName = beanClass.substring(beanClass.lastIndexOf(".") + 1);
@@ -49,6 +53,8 @@ public class ServiceTemplate {
 		ctx.put(VelocityContextConstants.DATE_KEY, VelocityContextConstants.simpleDateFormat());
 		ctx.put(VelocityContextConstants.CLASS_NAME, beanName);
 		ctx.put(VelocityContextConstants.IMPORT_CLASS, beanClass);
+		ctx.put(VelocityContextConstants.PRIVATE_KEY, beanPrivateKey);
+		ctx.put(VelocityContextConstants.PRIVATE_KEY_TYPE, beanPrivateKeyType);
 		ctx.put(VelocityContextConstants.AUTHOR, System.getProperty(XmlConstants.USER_NAME));
 		String subStr = targetProject.substring(targetProject.indexOf("/") + 1);
 		ctx.put(VelocityContextConstants.PROJECT, subStr.substring(0, subStr.indexOf("/")));

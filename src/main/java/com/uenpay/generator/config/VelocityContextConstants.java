@@ -24,6 +24,12 @@ public class VelocityContextConstants {
 	public static final String CLASS_NAME = "className";
 
 	public static final String IMPORT_CLASS = "importClass";
+	
+	public static final String PRIVATE_KEY = "privateKey";
+	
+	public static final String PRIVATE_KEY_UP = "privateKeyUp";
+	
+	public static final String PRIVATE_KEY_TYPE = "privateKeyType";
 
 	public static final String PAGE_FILE = "pageFile";
 	

@@ -15,6 +15,9 @@ package com.uenpay.generator.config;
 public class XmlConstants {
 
 	public static final String BEAN_CLASS = "bean-class";
+	public static final String BEAN_PRIVATE_KEY = "bean-privateKey";
+	
+	public static final String BEAN_PRIVATE_KEY_TYPE = "bean-privateKeyType";
 	
 	public static final String JAVASERVICEGENERATOR_TARGETPACKAGE = "javaServiceGenerator-targetPackage";
 	
@@ -33,8 +36,6 @@ public class XmlConstants {
 	public static final String PAGEGENERATOR_TARGETJAVASCRIPTFILE = "pageGenerator-targetJavaScriptFile";
 	
 	public static final String PAGEGENERATOR_TARGETPROJECT = "pageGenerator-targetProject";
-	
-	public static final String PAGEGENERATOR_PARAM = "pageGenerator-param";
 	
 	public static final String PAGEGENERATOR_TITLE = "pageGenerator-title";
 }

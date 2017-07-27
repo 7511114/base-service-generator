@@ -73,9 +73,9 @@ public class ${className}Controller {
 	 * @return
 	 */
 	@RequestMapping(value="dialog",method=RequestMethod.GET)
-	public String userDialog(Long id,Model model){
-		if(null != id){
-			${className} record = ${classNameLow}Service.getById(id);
+	public String userDialog(${privateKeyType} ${privateKey},Model model){
+		if(null != ${privateKey}){
+			${className} record = ${classNameLow}Service.getById(${privateKey});
 			model.addAttribute("record", record);
 		}
 		return "${pageFile}/${classNameLow}Edit";
@@ -90,7 +90,7 @@ public class ${className}Controller {
 	@RequestMapping(value="edit",method=RequestMethod.POST)
 	public @ResponseBody Long edit(${className} record) throws Exception{
 		SessionUser sessionUser = ThreadLocalContainer.getUser();
-		if(null != record.getId()){
+		if(null != record.get${privateKeyUp}()){
 			record.setUpdateUser(String.valueOf(sessionUser.getUserId()));
 			record.setUpdateTime(new Date());
 			record.setDataVersion(record.getDataVersion()+1);
@@ -102,7 +102,7 @@ public class ${className}Controller {
 			record.setDataVersion(1);
 			${classNameLow}Service.save(record);
 		}
-		return record.getId();
+		return record.get${privateKeyUp}();
 	}
 	
 	@RequestMapping(value="remove",method=RequestMethod.POST)
@@ -112,7 +112,7 @@ public class ${className}Controller {
 		}
 		#set( $xiaoyu = '<' )
 		for(int i=0; i${xiaoyu}ids.size(); i++){
-			${classNameLow}Service.remove((long)ids.get(i).getId());
+			${classNameLow}Service.remove(ids.get(i).getId());
 		}
 		return 1;
 	}
