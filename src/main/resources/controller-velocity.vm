@@ -36,6 +36,7 @@ import ${importClass};
 import com.uenpay.page.PageData;
 import com.uenpay.page.PageForm;
 import com.uenpay.param.IdParam;
+import com.uenpay.util.FormValidateUtils;
 
 @Controller
 @RequestMapping(value="${classNameLow}")
@@ -89,7 +90,8 @@ public class ${className}Controller extends PropertyEditorSupportController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value="edit",method=RequestMethod.POST)
-	public @ResponseBody ${privateKeyType} edit(${className} record) throws Exception{
+	public @ResponseBody ${privateKeyType} edit(${className} record, BindingResult result) throws Exception{
+		FormValidateUtils.validateForm(result);
 		SessionUser sessionUser = ThreadLocalContainer.getUser();
 		if(null != record.get${privateKeyUp}()){
 			record.setUpdateUser(sessionUser.getUserId());
