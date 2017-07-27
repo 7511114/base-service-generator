@@ -88,17 +88,16 @@ public class ${className}Controller {
 	 * @throws Exception
 	 */
 	@RequestMapping(value="edit",method=RequestMethod.POST)
-	public @ResponseBody Long edit(${className} record) throws Exception{
+	public @ResponseBody ${privateKeyType} edit(${className} record) throws Exception{
 		SessionUser sessionUser = ThreadLocalContainer.getUser();
 		if(null != record.get${privateKeyUp}()){
-			record.setUpdateUser(String.valueOf(sessionUser.getUserId()));
+			record.setUpdateUser(sessionUser.getUserId());
 			record.setUpdateTime(new Date());
 			record.setDataVersion(record.getDataVersion()+1);
 			${classNameLow}Service.update(record);
 		}else{
-			record.setCreateUser(String.valueOf(sessionUser.getUserId()));
+			record.setCreateUser(sessionUser.getUserId());
 			record.setCreateTime(new Date());
-			record.setDelFlag(1);
 			record.setDataVersion(1);
 			${classNameLow}Service.save(record);
 		}

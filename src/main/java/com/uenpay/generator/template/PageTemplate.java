@@ -9,6 +9,9 @@
 package com.uenpay.generator.template;
 
 import java.io.File;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.velocity.Template;
@@ -78,4 +81,21 @@ public class PageTemplate {
 		TemplateUtils.merge(template, ctx, new File(file, beanNameLow+"Edit.vm"));
 		System.out.println("-----------"+beanNameLow+"Edit.vm"+"生成pageEdit成功------------");
 	}
+	
+	/*private List<String> initMap(String beanClass){
+		List<String> list = new ArrayList<String>();
+		try {
+			Class clazz = Class.forName(beanClass);
+			Field[] field = clazz.getDeclaredFields(); // 获取实体类的所有属性，
+			for (int j = 0; j < field.length; j++) { // 遍历所有属性
+                String name = field[j].getName(); // 获取属性的名字
+                list.add(name);
+			}
+			return list;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}*/
 }
