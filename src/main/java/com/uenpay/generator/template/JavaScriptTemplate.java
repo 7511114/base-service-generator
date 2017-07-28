@@ -37,8 +37,8 @@ public class JavaScriptTemplate {
 		String beanClass = map.get(XmlConstants.BEAN_CLASS);
 		String beanPrivateKey = map.get(XmlConstants.BEAN_PRIVATE_KEY);
 		beanPrivateKey = (null == beanPrivateKey || "".equals(beanPrivateKey)) ? "id" : beanPrivateKey;
-		
-		String title = map.get(XmlConstants.PAGEGENERATOR_TITLE);
+		String beanTitle = map.get(XmlConstants.BEAN_TITLE);
+		beanTitle = null == beanTitle ? "" : beanTitle;
 		
 		//js
 		String targetJavaScriptFile = map.get(XmlConstants.PAGEGENERATOR_TARGETJAVASCRIPTFILE);
@@ -51,7 +51,7 @@ public class JavaScriptTemplate {
 		VelocityContext ctx = new VelocityContext();
 		ctx.put(VelocityContextConstants.PAGE_FILE, pageFile);
 		ctx.put(VelocityContextConstants.PAGE_PARAM, beanPrivateKey);
-		ctx.put(VelocityContextConstants.PAGE_TITLE, title);
+		ctx.put(VelocityContextConstants.THEME_TITLE, beanTitle);
 		String beanNameLow = StringUtils.toLowerCaseFirstOne(beanName);
 		ctx.put(VelocityContextConstants.CLASS_NAME_LOW, beanNameLow);
 		File file = FileUtils.getDirectory(targetProject, targetJavaScriptFile+"/"+pageFile);

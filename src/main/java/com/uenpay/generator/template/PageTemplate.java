@@ -9,9 +9,6 @@
 package com.uenpay.generator.template;
 
 import java.io.File;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.velocity.Template;
@@ -42,7 +39,8 @@ public class PageTemplate {
 		String targetPageFile = map.get(XmlConstants.PAGEGENERATOR_TARGETPAGEFILE);
 		//分类文件夹
 		String pageFile = map.get(XmlConstants.JAVACONTROLLERGENERATOR_PAGEFILE);
-		String title = map.get(XmlConstants.PAGEGENERATOR_TITLE);
+		String beanTitle = map.get(XmlConstants.BEAN_TITLE);
+		beanTitle = null == beanTitle ? "" : beanTitle;
 		//目标目录
 		String targetProject = map.get(XmlConstants.PAGEGENERATOR_TARGETPROJECT);
 		String beanName = beanClass.substring(beanClass.lastIndexOf(".")+1);
@@ -50,7 +48,7 @@ public class PageTemplate {
 		ctx.put(VelocityContextConstants.PAGE_FILE, pageFile);
 		String beanNameLow = StringUtils.toLowerCaseFirstOne(beanName);
 		ctx.put(VelocityContextConstants.CLASS_NAME_LOW, beanNameLow);
-		ctx.put(VelocityContextConstants.PAGE_TITLE, title);
+		ctx.put(VelocityContextConstants.THEME_TITLE, beanTitle);
 		File file = FileUtils.getDirectory(targetProject, targetPageFile+"/"+pageFile);
 		TemplateUtils.merge(template, ctx, new File(file, beanNameLow+"Page.vm"));
 		System.out.println("-----------"+beanNameLow+"Page.vm"+"生成pageData成功------------");
@@ -66,7 +64,8 @@ public class PageTemplate {
 		String beanClass = map.get(XmlConstants.BEAN_CLASS);
 		//页面
 		String targetPageFile = map.get(XmlConstants.PAGEGENERATOR_TARGETPAGEFILE);
-		String title = map.get(XmlConstants.PAGEGENERATOR_TITLE);
+		String beanTitle = map.get(XmlConstants.BEAN_TITLE);
+		beanTitle = null == beanTitle ? "" : beanTitle;
 		//分类文件夹
 		String pageFile = map.get(XmlConstants.JAVACONTROLLERGENERATOR_PAGEFILE);
 		//目标目录
@@ -74,7 +73,7 @@ public class PageTemplate {
 		String beanName = beanClass.substring(beanClass.lastIndexOf(".")+1);
 		VelocityContext ctx = new VelocityContext();
 		ctx.put(VelocityContextConstants.PAGE_FILE, pageFile);
-		ctx.put(VelocityContextConstants.PAGE_TITLE, title);
+		ctx.put(VelocityContextConstants.THEME_TITLE, beanTitle);
 		String beanNameLow = StringUtils.toLowerCaseFirstOne(beanName);
 		ctx.put(VelocityContextConstants.CLASS_NAME_LOW, beanNameLow);
 		File file = FileUtils.getDirectory(targetProject, targetPageFile+"/"+pageFile);

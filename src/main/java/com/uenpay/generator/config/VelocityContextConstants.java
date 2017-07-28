@@ -35,7 +35,7 @@ public class VelocityContextConstants {
 	
 	public static final String PAGE_PARAM = "param";
 	
-	public static final String PAGE_TITLE = "title";
+	public static final String THEME_TITLE = "title";
 	
 	public static final String PACKAGE_SERVICE = "packageService";
 	

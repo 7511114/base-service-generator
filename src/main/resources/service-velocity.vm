@@ -18,7 +18,7 @@ import com.uenpay.page.PageForm;
 
 /**
  * @author ${author}
- * Specification : 文档说明
+ * Specification : 文档说明   ${title}
  */
 public interface I${className}Service {
 

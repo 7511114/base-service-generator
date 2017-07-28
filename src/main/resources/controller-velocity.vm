@@ -5,6 +5,7 @@
  * package ：${package}
  * file : I${className}Service.java
  * date ：${date}
+ * Specification : 文档说明: ${title}
  */
 package ${package};
 
@@ -49,7 +50,7 @@ public class ${className}Controller extends PropertyEditorSupportController {
 	private ImportExcelTemplate importExcelTemplate;
 
 	/**
-	 * 用户信息页面
+	 * ${title}信息页面
 	 * @return
 	 */
 	@RequestMapping(value="pages",method=RequestMethod.GET)
@@ -58,7 +59,7 @@ public class ${className}Controller extends PropertyEditorSupportController {
 	}
 	
 	/**
-	 * 查询用户信息列表
+	 * 查询${title}信息列表
 	 * @param form
 	 * @param record
 	 * @return

@@ -19,6 +19,9 @@ public class XmlConstants {
 	
 	public static final String BEAN_PRIVATE_KEY_TYPE = "bean-privateKeyType";
 	
+	
+	public static final String BEAN_TITLE = "bean-title";
+	
 	public static final String JAVASERVICEGENERATOR_TARGETPACKAGE = "javaServiceGenerator-targetPackage";
 	
 	public static final String JAVASERVICEGENERATOR_TARGETPROJECT = "javaServiceGenerator-targetProject";
@@ -36,6 +39,4 @@ public class XmlConstants {
 	public static final String PAGEGENERATOR_TARGETJAVASCRIPTFILE = "pageGenerator-targetJavaScriptFile";
 	
 	public static final String PAGEGENERATOR_TARGETPROJECT = "pageGenerator-targetProject";
-	
-	public static final String PAGEGENERATOR_TITLE = "pageGenerator-title";
 }
